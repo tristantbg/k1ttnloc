@@ -1,0 +1,17 @@
+title: Page
+pages: false
+files: true
+fields:
+  title:
+    label: Title
+    type:  text
+  left:
+    label: Column left
+    type: textarea
+  right:
+    label: Column right
+    type: textarea
+  text:
+    label: Description (for SEO)
+    type: textarea
+    help: Optional

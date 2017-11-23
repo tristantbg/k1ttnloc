@@ -1,0 +1,51 @@
+title: Site
+fields:
+  tab1:
+    label: Main infos
+    type: tabs
+  title:
+    label: Title
+    type:  text
+  description:
+    label: Description for SEO
+    type:  textarea
+  keywords:
+    label: Keywords
+    type:  tags
+  ogimage:
+    label: Facebook OpenGraph image
+    type: image
+    help: 1200x630px minimum
+    width: 1/2
+  legal:
+    label: Legal notice
+    type: quickselect
+    options: pages
+    width: 1/2
+  tab2:
+    label: Infos bar & Footer
+    type: tabs
+  mainInformations:
+    label: Infos bar
+    type: structure
+    style: table
+    fields:
+      content:
+        label: Content
+        type: textarea
+  footer:
+    label: Footer
+    type: textarea
+  tab3:
+    label: More options
+    type: tabs
+  customcss:
+    label: Custom CSS
+    type: textarea
+    buttons: false
+  googleAnalytics:
+    label: Google Analytics ID
+    type: text
+    icon: code
+    help: Tracking ID in the form UA-XXXXXXXX-X. Keep this field empty if you are not using it.
+    width: 1/2

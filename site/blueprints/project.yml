@@ -1,0 +1,107 @@
+title: Location
+files: true
+pages: false
+files:
+  fields:
+    videolink:
+      label: Video ID
+      type: text
+      icon: code
+      help: Youtube ID or Vimeo ID
+    vendor:
+      label: Vendor
+      type: radio
+      default: vimeo
+      options:
+        vimeo: Vimeo 
+        youtube: Youtube
+    videostream:
+      label: Video external stream link (.m3u8)
+      type: url
+    videoexternal:
+      label: Video external file link
+      type: url
+    videofile:
+      label: Video File
+      type: select
+      options: videos
+fields:
+  prevnext: prevnext
+  autoid:
+    label: Secret ID
+    type: hidden
+  mainTitle:
+    label: Main infos
+    type: headline
+  title:
+    label: Title
+    type:  text
+    width: 1/2
+  artist:
+    label: By
+    type: text
+    width: 1/2
+  client:
+    label: Client
+    type: text
+    width: 1/2
+  category:
+    label: Category
+    type: select
+    width: 1/4
+    columns: 1
+    required: true
+    options:
+      photography: Photography
+      film: Film
+      event: Event
+  featured:
+    label: Featured image
+    type: image
+    help: Required to display project
+    width: 1/4
+  featuredvideo:
+    label: Featured video?
+    type: fieldtoggle
+    default: no
+    required: true
+    width: 1/4
+    options:
+      yes: "Yes"
+      no: "No"
+    show:
+      yes: featuredvideolink featuredvideofile featuredvideofilewebm
+    hide:
+      no: featuredvideolink featuredvideofile featuredvideofilewebm
+  featuredvideolink:
+    label: Featured Video link
+    type: url
+    width: 1/4
+  featuredvideofile:
+    label: Featured Video file (mp4)
+    type: quickselect
+    options: videos
+    width: 1/4
+  featuredvideofilewebm:
+    label: Featured Video file (webm)
+    type: quickselect
+    options: videos
+    width: 1/4
+  contentTitle:
+    label: Content
+    type: headline
+  text:
+    label: Description
+    type: textarea
+    buttons:
+      - link
+    width: 3/4
+  additionalText:
+    label: Additional Text
+    type: textarea
+    buttons:
+      - link
+    width: 1/4
+  medias: 
+    label: Images
+    type: images

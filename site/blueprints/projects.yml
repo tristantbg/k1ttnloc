@@ -1,0 +1,33 @@
+title: Locations
+pages:
+  template:
+    - project
+  num:
+    mode: default
+    display: null
+  max: null
+  limit: "100"
+  sort: false
+  hide: false
+files: false
+fields:
+  mainSettings:
+    label: Main settings
+    type: tabs
+  title:
+    label: Title
+    type:  text
+  pageindex:
+    label: Projects
+    type: index
+    options: children
+    rows: 100
+    columns:
+      title:
+        label: Title
+        width: 200
+      artist:
+        label: By
+        width: 200
+      category: Category
+      uid: Slug

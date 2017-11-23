@@ -1,0 +1,25 @@
+title: Client
+pages: false
+files: false
+fields:
+  autoid:
+    label: Secret ID
+    type: text
+    readonly: true
+    width: 1/2
+  tinyurl:
+    label: URL
+    type: tinyurl
+    width: 1/2
+  title:
+    label: Title
+    type:  text
+  visibleLocations:
+    label: Visible Locations
+    type: checkboxes
+    options: query
+    query:
+      page: /locations
+      fetch: children
+      value: '{{autoid}}'
+      text: '{{title}}'

@@ -1,0 +1,9 @@
+title: Clients
+pages:
+  template:
+    - clientpage
+files: false
+fields:
+  title:
+    label: Title
+    type:  text
