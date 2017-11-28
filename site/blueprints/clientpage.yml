@@ -2,18 +2,28 @@ title: Client
 pages: false
 files: false
 fields:
+  prevnext: prevnext
   autoid:
     label: Secret ID
     type: text
     readonly: true
     width: 1/2
   tinyurl:
-    label: URL
+    label: Secret URL
     type: tinyurl
     width: 1/2
   title:
-    label: Title
+    label: Client title
     type:  text
+  projectTitle:
+    label: Project title
+    type:  text
+    width: 3/4
+  date:
+    label: Project date
+    type:  date
+    format: DD/MM/YYYY
+    width: 1/4
   visibleLocations:
     label: Visible Locations
     type: checkboxes

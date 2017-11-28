@@ -50,7 +50,7 @@ $(function() {
             app.searchBar();
             app.mouseNav();
             app.videoHover();
-            app.contentShrink();
+            //app.contentShrink();
             app.iScroll.init();
         },
         sizeSet: function() {

@@ -7,3 +7,8 @@ fields:
   title:
     label: Title
     type:  text
+  sortable:
+    label: Clients
+    type:  sortable
+    sortable: false
+    layout:  base

@@ -97,19 +97,35 @@
 		</a>
 	</div>
 	<div id="filters">
-		<?php if (in_array($page->intendedTemplate(), ["clientpage", "project"])): ?>
-			<a><?= $page->title()->html() ?></a>
+		<?php if ($page->intendedTemplate() == "clientpage"): ?>
+			<?php
+
+			$linkTo = '<a href="'. site()->url().'/'.$page->autoid().'/'.$page->uid() .'" data-target="projects">';
+			$projectHeader = $linkTo.$page->title()->html().'</a>';
+			if ($page->projectTitle()->isNotEmpty()){
+				$projectHeader .= $linkTo.$page->projectTitle()->html().'</a>';
+			}
+			if ($page->date()){
+				$projectHeader .= $linkTo.$page->date('d M Y').'</a>';
+			}
+
+			echo $projectHeader;
+
+			?>
+		<?php endif ?>
+		<?php if ($page->intendedTemplate() == "project"): ?>
+			<?php e($page->projectHeader(), $page->projectHeader()) ?>
 		<?php endif ?>
 	</div>
 	<div id="information">
 		<?php if ($page->intendedTemplate() == "clientpage"): ?>
-			<a>Private area</a>
-		<?php endif ?>
-		<?php if ($page->intendedTemplate() == "project"): ?>
-			<a data-target="back">Private area</a>
+			<a href="<?= $site->url() ?>" data-target>Exit</a>
+		<?php elseif ($page->intendedTemplate() == "project"): ?>
+			<a href="<?= $site->url() ?>" data-target>Exit</a>
+		<?php else: ?>
+			<a href="https://www.kittenproduction.com">Exit</a>
 		<?php endif ?>
 	</div>
-	<div id="menu" event-target="menu"></div>
 </header>
 
 <div id="container">

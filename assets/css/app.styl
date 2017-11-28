@@ -140,7 +140,9 @@ a, a:hover, a:visited, a:focus
 
 body.project
 	#container
-		min-height 100vh
+		height 'calc(100vh - %s - 2px)' % ($headerSize)
+		+below($md)
+			min-height 100vh
 
 header
 	hideselect()
@@ -433,7 +435,7 @@ header
 		top $headerSize
 		position fixed
 		+above($md + 1)
-			height 'calc(100vh - %s - 1px)' % $headerSize
+			height 'calc(100vh - %s - 1px)' % ($headerSize*2)
 			min-height 300px
 		+below($md)
 			height 'calc(100vh - %s - %s)' % ($headerSize $padding)
@@ -599,6 +601,11 @@ header
 	position relative
 	max-width 100vw
 	overflow hidden
+	.default-message
+		height 'calc(100vh - %s)' % ($headerSize*2)
+		display flex
+		align-items center
+		justify-content center
 	.separator
 		+above($sm + 1)
 			position absolute

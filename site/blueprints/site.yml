@@ -22,17 +22,20 @@ fields:
     type: quickselect
     options: pages
     width: 1/2
+  defaultMessage:
+    label: Default Intro Message
+    type: textarea
   tab2:
     label: Infos bar & Footer
     type: tabs
-  mainInformations:
-    label: Infos bar
-    type: structure
-    style: table
-    fields:
-      content:
-        label: Content
-        type: textarea
+  # mainInformations:
+  #   label: Infos bar
+  #   type: structure
+  #   style: table
+  #   fields:
+  #     content:
+  #       label: Content
+  #       type: textarea
   footer:
     label: Footer
     type: textarea

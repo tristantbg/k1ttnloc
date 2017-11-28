@@ -5,7 +5,7 @@ return function ($site, $pages, $page, $args) {
 	$title = $page->title()->html();
 	$artist = $page->artist()->html();
 	$pageTitle = $title;
-	if($page->artist()->isNotEmpty()) $pageTitle .= ' × '.$artist;
+	if($page->artist()->isNotEmpty()) $pageTitle .= ' '.$artist;
 	$description = null;
 	if ($page->text()->isNotEmpty()) $description = $page->text()->kt();
 	$additionalText = null;

@@ -55,13 +55,9 @@ c::set('thumb.quality', 100);
 //c::set('thumbs.driver', 'im');
 c::set('routes', array(
 	array(
-		'pattern' => '(:any)',
-		'action'  => function($autoid) {
+		'pattern' => '(:any)/(:any)',
+		'action'  => function($autoid,$clientUid) {
 			$clientPage = page(site()->index()->filterBy('autoid', $autoid)->first());
-			// if (!site()->user() && $page) {
-			// 	$user = site()->user('client');
-			// 	$user->login('h@sACce$$');
-			// }
 			if ($clientPage && $clientPage->isVisible()) {
 				return $clientPage;
 			}
@@ -81,16 +77,35 @@ c::set('routes', array(
 		}
 	),
 	array(
-		'pattern' => '(:any)/(:any)',
-		'action'  => function($autoid,$uid) {
+		'pattern' => 'clients/(:any)',
+		'action'  => function($uid) {
+			if (!site()->user()) {
+				go(site()->homePage());
+			} else {
+				return page("clients/".$uid);
+			}
+		}
+	),
+	array(
+		'pattern' => '(:any)/(:any)/(:any)',
+		'action'  => function($autoid,$clientUid,$uid) {
 			$clientPage = page(site()->index()->filterBy('autoid', $autoid)->first());
-			// if ($page) {
-			// 	$user = site()->user('client');
-			// 	$user->login('h@sACce$$');
-			// }
+			// Load page
 			$location = page('locations/'.$uid);
+			$linkTo = '<a href="'. site()->url().'/'.$clientPage->autoid().'/'.$clientPage->uid() .'" data-target="projects">';
+			$location->projectHeader = $linkTo.$clientPage->title()->html().'</a>';
+			if ($clientPage->projectTitle()->isNotEmpty()){
+				$location->projectHeader .= $linkTo.$clientPage->projectTitle()->html().'</a>';
+			}
+			if ($clientPage->date()){
+				$location->projectHeader .= $linkTo.$clientPage->date('d M Y').'</a>';
+			}
 			$hasAccess = in_array($location->autoid(), $clientPage->visibleLocations()->split());
-			if ($clientPage && $clientPage->isVisible() && $location && $hasAccess) {
+			if (!site()->user() && $clientPage->date() && $clientPage->date() < time()){
+				// Event is in the past
+				go(site()->homePage());
+			}
+			elseif ($clientPage && $clientPage->isVisible() && $location && $hasAccess) {
 				return $location;
 			} else {
 				go(site()->homePage());

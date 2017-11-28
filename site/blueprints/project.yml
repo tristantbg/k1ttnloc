@@ -36,30 +36,15 @@ fields:
   title:
     label: Title
     type:  text
-    width: 1/2
-  artist:
-    label: By
-    type: text
-    width: 1/2
-  client:
-    label: Client
-    type: text
-    width: 1/2
-  category:
-    label: Category
-    type: select
-    width: 1/4
-    columns: 1
-    required: true
-    options:
-      photography: Photography
-      film: Film
-      event: Event
+    width: 3/4
   featured:
     label: Featured image
     type: image
     help: Required to display project
     width: 1/4
+  artist:
+    label: Subtitle
+    type: text
   featuredvideo:
     label: Featured video?
     type: fieldtoggle
@@ -90,18 +75,11 @@ fields:
   contentTitle:
     label: Content
     type: headline
-  text:
-    label: Description
-    type: textarea
-    buttons:
-      - link
-    width: 3/4
   additionalText:
     label: Additional Text
     type: textarea
     buttons:
       - link
-    width: 1/4
   medias: 
     label: Images
     type: images

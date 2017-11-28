@@ -9,12 +9,12 @@
 			<div class="project-item <?= $project->category() ?>">
 
 			<a 
-			href="<?= $site->url().'/'.$page->autoid().'/'.$project->uid() ?>" 
+			href="<?= $site->url().'/'.$page->autoid().'/'.$page->uid().'/'.$project->uid() ?>" 
 			<?php e($isVideo, 'class="video" ') ?>
 			data-target="project">
 				<div class="project-infos">
 					<?= $project->title()->html() ?>
-					<br><?php e($project->artist()->isNotEmpty(), "× ".$project->artist()->html()) ?>
+					<br><?php e($project->artist()->isNotEmpty(), $project->artist()->html()) ?>
 				</div>
 					<?php if($isVideo): ?>
 						<?php

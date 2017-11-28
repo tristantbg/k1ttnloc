@@ -72,29 +72,18 @@
 			<div class="project-infos">
 				<div id="slide-number">1/<?= $images->count() ?></div>
 				<div class="project-title">
-					<!-- <h1><?= $pageTitle ?></h1> -->
+					<h1><?= $pageTitle ?></h1>
 				</div>
-				<?php if(false && $description): ?>
-				<div class="project-description">
-					<?= $description ?>
-				</div>
-				<?php endif ?>
 				<?php if($additionalText): ?>
 				<div class="project-description additional">
 					<?= $additionalText ?>
 				</div>
 				<?php endif ?>
 			</div>
-			<a event-target="more"><?php e($page->text()->isNotEmpty(), 'More') ?></a>
+			<a event-target="more"><?php //e($page->text()->isNotEmpty(), 'Infos') ?></a>
 		</div>
 
 	</div>
-
-	<?php if ($page->text()->isNotEmpty()): ?>
-		<div id="projects">
-			<?= $page->text()->kt() ?>
-		</div>
-	<?php endif ?>
 
 </div>
 
