@@ -9,7 +9,11 @@
 			<div class="project-item <?= $project->category() ?>">
 
 			<a 
+			<?php if ($page->intendedTemplate() == "projects"): ?>
+			href="<?= $project->url() ?>" 
+			<?php else: ?>
 			href="<?= $site->url().'/'.$page->autoid().'/'.$page->uid().'/'.$project->uid() ?>" 
+			<?php endif ?>
 			<?php e($isVideo, 'class="video" ') ?>
 			data-target="project">
 				<div class="project-infos">

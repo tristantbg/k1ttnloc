@@ -2,11 +2,13 @@
 
 return function ($site, $pages, $page) {
 
-	$menuPages = $pages->visible()->filterBy('intendedTemplate', 'not in', ['project', 'projects']);
+	$projects = new Collection();
+	if($site->user()) $projects = $page->children()->visible();
+
 	return array(
-		'bodyClass' => 'page',
+		'bodyClass' => 'projects',
 		'pageTitle' => $page->title()->html(),
-		'menuPages' => $menuPages
+		'projects' => $projects
 	);
 }
 

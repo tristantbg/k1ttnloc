@@ -57,12 +57,16 @@ c::set('routes', array(
 	array(
 		'pattern' => '(:any)/(:any)',
 		'action'  => function($autoid,$clientUid) {
-			$clientPage = page(site()->index()->filterBy('autoid', $autoid)->first());
-			if ($clientPage && $clientPage->isVisible()) {
-				return $clientPage;
-			}
-			else {
-				go(site()->homePage());
+			if (!site()->user()) {
+				$clientPage = page(site()->index()->filterBy('autoid', $autoid)->first());
+				if ($clientPage && $clientPage->isVisible() && $clientPage->uid() == $clientUid) {
+					return $clientPage;
+				}
+				else {
+					go(site()->homePage());
+				}
+			} else {
+				return page($autoid."/".$clientUid);
 			}
 		}
 	),
@@ -105,7 +109,7 @@ c::set('routes', array(
 				// Event is in the past
 				go(site()->homePage());
 			}
-			elseif ($clientPage && $clientPage->isVisible() && $location && $hasAccess) {
+			elseif ($clientPage && $clientPage->isVisible() && $clientPage->uid() == $clientUid && $location && $hasAccess) {
 				return $location;
 			} else {
 				go(site()->homePage());
