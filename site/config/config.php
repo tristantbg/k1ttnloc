@@ -57,7 +57,7 @@ c::set('routes', array(
 	array(
 		'pattern' => '(:any)/(:any)',
 		'action'  => function($autoid,$clientUid) {
-			if (!site()->user()) {
+			if ($autoid != "locations") {
 				$clientPage = page(site()->index()->filterBy('autoid', $autoid)->first());
 				if ($clientPage && $clientPage->isVisible() && $clientPage->uid() == $clientUid) {
 					return $clientPage;
@@ -65,7 +65,7 @@ c::set('routes', array(
 				else {
 					go(site()->homePage());
 				}
-			} else {
+			} elseif(site()->user()) {
 				return page($autoid."/".$clientUid);
 			}
 		}
