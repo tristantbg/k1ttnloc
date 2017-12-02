@@ -367,7 +367,7 @@ $(function() {
                         lastTarget = target;
                         target = $currentTarget.data('target');
                         if (target === "back") app.goBack();
-                        $body.attr('class', target);
+                        
                         // console.log(lastTarget);
                     },
                     onBefore: function(request, $container) {
@@ -386,6 +386,7 @@ $(function() {
                         render: function($container, $newContent) {
                             // Inject the new content
                             app.sizeSet();
+                            $body.attr('class', $newContent.find("#page-content").attr("class"));
                             $container.html($newContent);
                         }
                     },

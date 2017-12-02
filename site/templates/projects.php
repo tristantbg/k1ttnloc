@@ -1,6 +1,6 @@
 <?php snippet('header') ?>
 
-<div id="page-content" class="page">
+<div id="page-content" class="<?php e($site->user(), "projects", "page") ?>">
 	
 	<?php if ($site->user()): ?>
 

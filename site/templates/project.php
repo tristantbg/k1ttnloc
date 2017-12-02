@@ -1,6 +1,6 @@
 <?php snippet('header') ?>
 
-<div id="page-content" class="project <?= $page->category() ?>">
+<div id="page-content" class="project">
 	
 	<div id="project-content">
 		
