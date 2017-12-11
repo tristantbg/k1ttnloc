@@ -59,7 +59,16 @@ c::set('routes', array(
 		'action'  => function($autoid,$clientUid) {
 			if ($autoid != "locations") {
 				$clientPage = page(site()->index()->filterBy('autoid', $autoid)->first());
-				if ($clientPage && $clientPage->isVisible() && $clientPage->uid() == $clientUid) {
+
+				// End Date
+				$endDate = $clientPage->date();
+				if($clientPage->dateEnd()->isNotEmpty()) $endDate = $clientPage->date(null, 'dateEnd');
+
+				if (!site()->user() && $endDate && strtotime('00:00:00') > $endDate){
+					// Event is in the past
+					go(site()->homePage());
+				}
+				else if ($clientPage && $clientPage->isVisible() && $clientPage->uid() == $clientUid) {
 					return $clientPage;
 				}
 				else {
@@ -102,10 +111,17 @@ c::set('routes', array(
 				$location->projectHeader .= $linkTo.$clientPage->projectTitle()->html().'</a>';
 			}
 			if ($clientPage->date()){
-				$location->projectHeader .= $linkTo.$clientPage->date('d M Y').'</a>';
+				$location->projectHeader .= $linkTo.$clientPage->date('d M Y');
+				if ($clientPage->dateEnd()->isNotEmpty()) $location->projectHeader .= ' - '.$clientPage->date('d M Y', 'dateEnd');
+				$location->projectHeader .= '</a>';
 			}
 			$hasAccess = in_array($location->autoid(), $clientPage->visibleLocations()->split());
-			if (!site()->user() && $clientPage->date() && $clientPage->date() < time()){
+
+			// End Date
+			$endDate = $clientPage->date();
+			if($clientPage->dateEnd()->isNotEmpty()) $endDate = $clientPage->date(null, 'dateEnd');
+
+			if (!site()->user() && $endDate && strtotime('00:00:00') > $endDate){
 				// Event is in the past
 				go(site()->homePage());
 			}

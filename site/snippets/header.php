@@ -106,7 +106,9 @@
 				$projectHeader .= $linkTo.$page->projectTitle()->html().'</a>';
 			}
 			if ($page->date()){
-				$projectHeader .= $linkTo.$page->date('d M Y').'</a>';
+				$projectHeader .= $linkTo.$page->date('d M Y');
+				if ($page->dateEnd()->isNotEmpty()) $projectHeader .= ' - '.$page->date('d M Y', 'dateEnd');
+				$projectHeader .= '</a>';
 			}
 
 			echo $projectHeader;

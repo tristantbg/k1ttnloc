@@ -14,6 +14,7 @@
 			<?php $isVideo = $image->videofile()->isNotEmpty() || $image->videolink()->isNotEmpty() || $image->videoexternal()->isNotEmpty() ?>
 		
 			<div class="slide" 
+			data-id="<?= $key + 1 ?>"
 			<?php if($image->caption()->isNotEmpty()): ?>
 			data-caption="<?= $image->caption()->kt()->escape() ?>"
 			<?php endif ?>
@@ -84,6 +85,8 @@
 		</div>
 
 	</div>
+
+	<?php snippet('images_grid', array('images' => $images, 'page' => $page)) ?>
 
 </div>
 

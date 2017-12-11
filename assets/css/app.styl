@@ -138,12 +138,6 @@ a, a:hover, a:visited, a:focus
 	span(1)
 	min-height 'calc(100vh - %s)' % ($headerSize*2)
 
-body.project
-	#container
-		height 'calc(100vh - %s - 2px)' % ($headerSize)
-		+below($md)
-			min-height 100vh
-
 header
 	hideselect()
 	display flex
@@ -435,7 +429,7 @@ header
 		top $headerSize
 		position fixed
 		+above($md + 1)
-			height 'calc(100vh - %s - 1px)' % ($headerSize*2)
+			height 'calc(100vh - %s - 1px)' % ($headerSize)
 			min-height 300px
 		+below($md)
 			height 'calc(100vh - %s - %s)' % ($headerSize $padding)
@@ -594,7 +588,7 @@ header
 				display none
 	#projects
 		margin-top 'calc(100vh - %s)' % $headerSize
-		padding $headerSize $padding
+		// padding $headerSize $padding
 
 #page-content.page
 	hideselect()

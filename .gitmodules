@@ -22,3 +22,6 @@
 [submodule "site/fields/tinyurl"]
 	path = site/fields/tinyurl
 	url = https://github.com/Thiousi/kirby-tinyurl-field/
+[submodule "site/plugins/autorotate"]
+	path = site/plugins/autorotate
+	url = https://github.com/mightymango/autorotate/

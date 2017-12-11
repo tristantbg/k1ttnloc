@@ -27,7 +27,6 @@ fields:
         label: Title
         width: 200
       artist:
-        label: By
+        label: Subtitle
         width: 200
-      category: Category
       uid: Slug
