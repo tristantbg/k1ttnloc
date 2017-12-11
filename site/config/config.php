@@ -76,26 +76,34 @@ c::set('routes', array(
 				}
 			} elseif(site()->user()) {
 				return page($autoid."/".$clientUid);
+			} else {
+				go(site()->homePage());
 			}
 		}
 	),
 	array(
 		'pattern' => 'locations/(:any)',
 		'action'  => function($uid) {
+			$location = page("locations/".$uid);
 			if (!site()->user()) {
 				go(site()->homePage());
+			} else if($location) {
+				return $location;
 			} else {
-				return page("locations/".$uid);
+				go(site()->homePage());
 			}
 		}
 	),
 	array(
 		'pattern' => 'clients/(:any)',
 		'action'  => function($uid) {
+			$clientPage = page("clients/".$uid);
 			if (!site()->user()) {
 				go(site()->homePage());
+			} else if($clientPage) {
+				return $clientPage;
 			} else {
-				return page("clients/".$uid);
+				go(site()->homePage());
 			}
 		}
 	),
