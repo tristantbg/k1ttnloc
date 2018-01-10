@@ -29,7 +29,7 @@
 							$source = $project->featuredvideolink();
 							if ($project->featuredvideofile()->toFile()) $source = $project->featuredvideofile()->toFile()->url();
 							?>
-							<div class="project-video" 
+							<div class="project-video featured" 
 							data-mp4="<?= $source ?>" 
 							<?php if($webm = $project->featuredvideofilewebm()->toFile()): ?>
 							data-webm="<?= $webm->url() ?>"
