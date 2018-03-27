@@ -1,4 +1,9 @@
 title: Locations
+options:
+  status: false
+  template: false
+  url: false
+  delete: false
 pages:
   template:
     - project
@@ -17,6 +22,7 @@ fields:
   title:
     label: Title
     type:  text
+    readonly: true
   pageindex:
     label: Projects
     type: index

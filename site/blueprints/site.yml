@@ -1,4 +1,6 @@
 title: Site
+pages:
+  template: default
 fields:
   tab1:
     label: Main infos

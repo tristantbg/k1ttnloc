@@ -1,4 +1,9 @@
 title: Clients
+options:
+  status: false
+  template: false
+  url: false
+  delete: false
 pages:
   template:
     - clientpage
@@ -7,6 +12,7 @@ fields:
   title:
     label: Title
     type:  text
+    readonly: true
   sortable:
     label: Clients
     type:  sortable
